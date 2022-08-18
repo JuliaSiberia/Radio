@@ -7,7 +7,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetStationAboveLimit() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
 
         radio.setNumberCurrentStation(11);
 
@@ -31,9 +31,9 @@ public class RadioTest {
 
     @Test
     public void shouldSetTheNextStationOnTheBorder() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(20);
 
-        radio.setNumberCurrentStation(9);
+        radio.setNumberCurrentStation(19);
         radio.next();
 
         int expected = 0;
@@ -44,12 +44,12 @@ public class RadioTest {
 
     @Test
     public void shouldSetThePrevStationOnTheBorder() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(20);
 
         radio.setNumberCurrentStation(0);
         radio.prev();
 
-        int expected = 9;
+        int expected = 19;
         int actual = radio.getNumberCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -87,7 +87,7 @@ public class RadioTest {
 
         radio.setToMaxVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getSoundVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -100,7 +100,7 @@ public class RadioTest {
         radio.setToMaxVolume();
         radio.decreaseVolume();
 
-        int expected = 9;
+        int expected = 99;
         int actual = radio.getSoundVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -137,7 +137,7 @@ public class RadioTest {
         radio.setToMaxVolume();
         radio.increaseVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getSoundVolume();
 
         Assertions.assertEquals(expected, actual);
